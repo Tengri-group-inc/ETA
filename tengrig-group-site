@@ -1,0 +1,115 @@
+// Tengri Group — Apple-Style Modern Website with Logo and Chatbot
+import React, { useEffect } from "react";
+
+export default function App() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+    document.head.appendChild(script);
+
+    const chatWidget = document.createElement("script");
+    chatWidget.src = "https://cdn.jsdelivr.net/npm/@chatscope/chat-ui-kit-react/dist/index.umd.js";
+    document.body.appendChild(chatWidget);
+  }, []);
+
+  return (
+    <main className="bg-black text-white font-sans">
+      {/* Navigation */}
+      <header className="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-md shadow-md">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+          <div className="flex items-center space-x-4">
+            <img src="/Tengri_Group_Logo_Generated.png" alt="Tengri Group Logo" className="h-10 w-auto" />
+            <h1 className="text-2xl font-semibold tracking-wide">TENGRI</h1>
+          </div>
+          <nav className="hidden md:flex space-x-6 text-sm text-gray-300">
+            <a href="#who" className="hover:text-white transition">Who We Are</a>
+            <a href="#what" className="hover:text-white transition">What We Do</a>
+            <a href="#insights" className="hover:text-white transition">Insights</a>
+            <a href="#contact" className="hover:text-white transition">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="pt-28 min-h-screen bg-gradient-to-br from-black via-[#0E3B66] to-black flex flex-col items-center justify-center text-center px-6">
+        <img src="/Tengri_Group_Logo_Generated.png" alt="Tengri Group Logo Large" className="w-28 mb-6" />
+        <h2 className="text-6xl font-bold mb-6 leading-tight">Reimagining Local Economies</h2>
+        <p className="text-xl text-gray-300 max-w-2xl">
+          Veteran-led, impact-driven. We acquire and elevate essential service businesses.
+        </p>
+      </section>
+
+      {/* Who We Are */}
+      <section id="who" className="max-w-6xl mx-auto py-24 px-6 text-center">
+        <h3 className="text-4xl font-semibold mb-8">Who We Are</h3>
+        <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          Tengri Group Inc. is a holding company acquiring small businesses across logistics, healthcare, and real estate. Founded by a U.S. Army veteran, we drive operational excellence with integrity and long-term value.
+        </p>
+      </section>
+
+      {/* What We Do */}
+      <section id="what" className="py-24 px-6 bg-[#0E3B66] text-white">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-4xl font-semibold text-center mb-12">What We Do</h3>
+          <div className="grid md:grid-cols-3 gap-12 text-center">
+            <div>
+              <h4 className="text-xl font-medium mb-2">Logistics & Trucking</h4>
+              <p className="text-gray-300">Streamlining supply chains with scalable freight operations across the Northeast.</p>
+            </div>
+            <div>
+              <h4 className="text-xl font-medium mb-2">Home Care</h4>
+              <p className="text-gray-300"><a href="https://www.bluehorizonhomecare.org" className="underline hover:text-white">Blue Horizon Home Care</a> empowers caregivers and clients with high-quality non-medical care.</p>
+            </div>
+            <div>
+              <h4 className="text-xl font-medium mb-2">Real Estate</h4>
+              <p className="text-gray-300">Smart development and property management focused on community needs.</p>
+            </div>
+            <div>
+              <h4 className="text-xl font-medium mb-2">Used Auto Sales</h4>
+              <p className="text-gray-300">Reliable pre-owned vehicles sold through Tengri Motors with concierge service.</p>
+            </div>
+            <div>
+              <h4 className="text-xl font-medium mb-2">General Contracting</h4>
+              <p className="text-gray-300">Residential and commercial renovations, built with precision and trust.</p>
+            </div>
+            <div>
+              <h4 className="text-xl font-medium mb-2">Business Revivals</h4>
+              <p className="text-gray-300">Transforming underperforming businesses into streamlined cash-flow assets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Insights Section */}
+      <section id="insights" className="max-w-6xl mx-auto py-24 px-6 text-center">
+        <h3 className="text-4xl font-semibold mb-6">Insights & Impact</h3>
+        <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          We believe in sharing what we learn. Our case studies and strategy notes offer a window into how value is created—one business at a time.
+        </p>
+        <p className="mt-4 text-sm text-gray-500">Coming soon: The Tengri Growth Journal.</p>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="bg-[#0E3B66] text-white py-24 text-center px-6">
+        <h3 className="text-4xl font-semibold mb-4">Get in Touch</h3>
+        <p className="text-lg mb-2">📧 info@tengrigroup.org</p>
+        <p>📍 Pennsylvania | New York | Connecticut</p>
+      </section>
+
+      {/* Chatbot Placeholder */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={() => alert("Chat with Tengri AI Assistant: Ask about sectors, trends, or ETA resources!")}
+          className="bg-[#0E3B66] hover:bg-indigo-800 text-white px-5 py-3 rounded-full shadow-lg text-sm font-medium"
+        >
+          💬 Chat with TengriBot
+        </button>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-black text-gray-400 py-6 text-center text-sm">
+        &copy; {new Date().getFullYear()} Tengri Group Inc. | Veteran-Owned Business | All Rights Reserved
+      </footer>
+    </main>
+  );
+}
