@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tengri Group | Building a Vertically Integrated Land Platform</title>
+  <meta name="description" content="A holding company building the operating platform for raw-land development in Pennsylvania. Septic, well, site, permitting, and capital under one roof." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & VARIABLES ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #FAF8F4;
+      --bg-dark:     #1A1A1A;
+      --text:        #1A1A1A;
+      --text-muted:  #5C5C5C;
+      --text-light:  #8C8C8C;
+      --accent:      #1F3A2B;
+      --gold:        #A88A3F;
+      --rule:        #DEDAD3;
+      --sans:        'Inter', system-ui, sans-serif;
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --max:         1120px;
+      --pad:         clamp(1.5rem, 5vw, 4rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT HELPERS ────────────────────────────────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    section { padding: clamp(4rem, 8vw, 7rem) 0; }
+    section + section { border-top: 1px solid var(--rule); }
+
+    h2 {
+      font-family: var(--sans);
+      font-size: clamp(1.05rem, 1.5vw, 1.15rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    p { color: var(--text-muted); max-width: 68ch; }
+    p + p { margin-top: 1.25em; }
+
+    a { color: inherit; text-decoration: none; }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ─── STICKY HEADER ──────────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      display: block;
+      height: 44px;
+      width: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: clamp(1rem, 2.5vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: 0.2s;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────────────── */
+    #hero {
+      padding: clamp(5rem, 10vw, 9rem) 0 clamp(4rem, 8vw, 7rem);
+      border-top: none;
+    }
+
+    .hero-inner {
+      display: block;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 {
+      font-family: var(--sans);
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-subhead {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 52ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-authority {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--accent);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .hero-link:hover { opacity: 0.65; }
+
+    /* ─── THESIS ─────────────────────────────────────────────────────────── */
+    #thesis .thesis-body {
+      max-width: 68ch;
+    }
+
+    #thesis .thesis-body p {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    #thesis .thesis-body p + p { margin-top: 1.5em; }
+
+    #thesis .thesis-close {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      font-style: italic;
+      color: var(--accent);
+      margin-top: 1.5em;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    /* ─── PLATFORM ───────────────────────────────────────────────────────── */
+    #platform .platform-lead {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+      margin-bottom: 3rem;
+    }
+
+    .layer-stack { display: flex; flex-direction: column; gap: 0; }
+
+    .layer-card {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--rule);
+      transition: background 0.2s;
+    }
+    .layer-card:last-child { border-bottom: 1px solid var(--rule); }
+
+    .layer-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      padding-top: 0.25rem;
+    }
+
+    .layer-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .layer-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 60ch;
+    }
+
+    .platform-footer {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-style: italic;
+      max-width: 60ch;
+    }
+
+    /* ─── PORTFOLIO ──────────────────────────────────────────────────────── */
+    #portfolio .portfolio-intro {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+      margin-bottom: 3rem;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .portfolio-card {
+      background: var(--bg);
+      padding: 2.25rem 2rem;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .portfolio-card h3 {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .portfolio-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: none;
+    }
+
+    .portfolio-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .portfolio-link:hover { opacity: 0.65; }
+
+    /* ─── SHARED LONG-FORM SECTION STYLES ────────────────────────────────── */
+    .section-body { max-width: 72ch; }
+    .section-body p { font-size: 0.95rem; color: var(--text-muted); }
+
+    .bullet-list {
+      list-style: none;
+      margin: 1.25rem 0;
+    }
+    .bullet-list li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      position: relative;
+      border-top: 1px solid var(--rule);
+      line-height: 1.6;
+    }
+    .bullet-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .bullet-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .section-subhead {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2.25rem 0 0.75rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    .process-note {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(168,138,63,0.04);
+    }
+    .process-note p { font-size: 0.85rem; color: var(--text-muted); max-width: none; }
+
+    .contact-line {
+      margin-top: 2rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .contact-line a { color: var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+    /* ─── LEADERSHIP ─────────────────────────────────────────────────────── */
+    #leadership .founder-card {
+      max-width: 72ch;
+    }
+
+    .founder-name {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .founder-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .founder-bio p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: none;
+    }
+
+    .founder-bio a {
+      color: var(--accent);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      font-size: 0.82rem;
+      display: inline-block;
+      margin-top: 0.75rem;
+    }
+
+    /* ─── PRINCIPLES ─────────────────────────────────────────────────────── */
+    #principles .principles-list {
+      list-style: none;
+      max-width: 60ch;
+    }
+
+    #principles .principles-list li {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    #principles .principles-list li:last-child { border-bottom: 1px solid var(--rule); }
+
+    #principles .principles-list .num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      padding-top: 0.2rem;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────────────────── */
+    #contact .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem 3rem;
+      max-width: 900px;
+    }
+
+    .contact-col h3 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-col a {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--accent);
+      transition: opacity 0.2s;
+    }
+    .contact-col a:hover { opacity: 0.7; }
+
+    .contact-col p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      max-width: none;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg-dark);
+      color: rgba(255,255,255,0.55);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    footer .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand .footer-logo {
+      display: block;
+      width: 140px;
+      height: auto;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.8rem;
+      max-width: 36ch;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-portfolio p,
+    .footer-nav p {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-portfolio a,
+    .footer-nav a {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+      margin-bottom: 0.3rem;
+    }
+    .footer-portfolio a:hover, .footer-nav a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-trust {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(168,138,63,0.6);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-legal {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.7;
+      max-width: 80ch;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner { max-width: 100%; }
+      .two-col { grid-template-columns: 1fr; gap: 1.5rem; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; }
+      .nav-toggle { display: flex; }
+      header .container { position: relative; }
+      nav.mobile {
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+        padding: 1.25rem var(--pad);
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .footer-top { flex-direction: column; gap: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ HEADER ══════ -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo" aria-label="Tengri Group">
+        <img src="/assets/tengri-logo.png" alt="Tengri Group" />
+      </a>
+      <nav id="main-nav">
+        <a href="#thesis">Thesis</a>
+        <a href="#platform">Platform</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#sellers">For Sellers</a>
+        <a href="#investors">For Investors</a>
+        <a href="#leadership">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════ HERO ═══════ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow">Holding Company · Pennsylvania</div>
+          <h1 class="hero-h1">We're building the operating platform for raw-land development.</h1>
+          <p class="hero-subhead">Tengri Group is acquiring and building the capabilities that turn unbuildable land into financeable, build-ready property: septic, well, site work, permitting, and capital, under one roof.</p>
+          <p class="hero-authority">Operating in Pennsylvania. Active in Bucks, Chester, Lehigh Valley, and beyond.</p>
+          <a href="#thesis" class="hero-link">Our thesis ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ THESIS ══════ -->
+  <section id="thesis">
+    <div class="container">
+      <h2>The Thesis</h2>
+      <div class="thesis-body">
+        <p>Most raw land in the United States is functionally unbuildable on day one. Soil won't perc. Wells aren't sited. Access isn't engineered. Permits aren't planned. The buyer doesn't know what they don't know.</p>
+        <p>The work of turning that land into a build-ready, financeable parcel is fragmented across a dozen specialists: Sewage Enforcement Officers, soil scientists, well drillers, excavators, civil engineers, surveyors, environmental consultants, township planners. Each one operates as a small, undercapitalized, schedule-constrained business. None of them coordinate. The buyer eats the integration cost.</p>
+        <p>We think there is a generational opportunity to consolidate this stack into a single operating platform that delivers buildability decisions in days instead of months, owns the bottleneck capabilities through acquisition and in-house build, and finances the projects it underwrites.</p>
+        <p class="thesis-close">That's what Tengri Group is building.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ PLATFORM ════ -->
+  <section id="platform">
+    <div class="container">
+      <h2>The Platform</h2>
+      <p class="platform-lead">Five capability layers. Each one a margin pool. Each one a moat against the layer below it.</p>
+      <div class="layer-stack">
+
+        <div class="layer-card">
+          <div class="layer-num">01</div>
+          <div>
+            <div class="layer-title">Decision Intelligence</div>
+            <p class="layer-body">The advisory and feasibility layer. Buildability assessments, perc test coordination, due diligence, deal scoring. Operating today as Tengri Development.</p>
+          </div>
+        </div>
+
+        <div class="layer-card">
+          <div class="layer-num">02</div>
+          <div>
+            <div class="layer-title">Field Execution</div>
+            <p class="layer-body">Septic installation, well drilling, excavation, site work. Acquired or built in-house, 2026–2028.</p>
+          </div>
+        </div>
+
+        <div class="layer-card">
+          <div class="layer-num">03</div>
+          <div>
+            <div class="layer-title">Permitting &amp; Engineering</div>
+            <p class="layer-body">SEO services, civil engineering, Act 537 planning, environmental compliance. Internalized through hiring and partnership.</p>
+          </div>
+        </div>
+
+        <div class="layer-card">
+          <div class="layer-num">04</div>
+          <div>
+            <div class="layer-title">Land Acquisition &amp; Development</div>
+            <p class="layer-body">Direct purchase of undervalued parcels. Subdivision. Build-ready lot sales. Joint ventures with builders. Long-term goal.</p>
+          </div>
+        </div>
+
+        <div class="layer-card">
+          <div class="layer-num">05</div>
+          <div>
+            <div class="layer-title">Capital</div>
+            <p class="layer-body">Deal-level financing. Land banking. Joint ventures with family offices and accredited investors. Tengri Capital.</p>
+          </div>
+        </div>
+
+      </div>
+      <p class="platform-footer">The full stack is a 5-year build. We don't pretend otherwise. We are operating at Layer 1 today, with an active acquisition program targeting Layers 2 and 3.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ PORTFOLIO ═══ -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <p class="portfolio-intro">A short list, honestly described. We are early. We are building.</p>
+      <div class="portfolio-grid">
+
+        <div class="portfolio-card">
+          <span class="portfolio-tag">Active</span>
+          <h3>Tengri Development</h3>
+          <p>Land buildability, perc test coordination, feasibility studies, septic and well inspection, due diligence consulting. Pennsylvania-licensed, township-coordinated, PA DEP Chapter 73 compliant. Serving Bucks, Chester, Lehigh Valley, Berks, Carbon, and Schuylkill counties.</p>
+          <a href="https://tengridevelopment.com" target="_blank" rel="noopener" class="portfolio-link">Visit Tengri Development →</a>
+        </div>
+
+        <div class="portfolio-card">
+          <span class="portfolio-tag">In Formation, 2026</span>
+          <h3>Tengri Capital</h3>
+          <p>Project-level capital deployment for parcels Tengri Development underwrites. Deal sizes $50K–$2M. Senior debt, mezzanine, and JV equity. Co-investment opportunities for accredited investors and family offices.</p>
+          <a href="#investors" class="portfolio-link">Inquire for details →</a>
+        </div>
+
+        <div class="portfolio-card">
+          <span class="portfolio-tag">Active Acquisition Program</span>
+          <h3>Field Services Holdings</h3>
+          <p>We are evaluating Pennsylvania-based septic installers, well drilling outfits, excavation companies, and small civil engineering firms for acquisition or partnership.</p>
+          <a href="#sellers" class="portfolio-link">See "For Sellers" →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ FOR SELLERS ═ -->
+  <section id="sellers">
+    <div class="container">
+      <h2>For Sellers</h2>
+      <div class="section-body">
+        <p style="font-size:1.05rem; color:var(--text); font-weight:400; max-width:60ch; margin-bottom:1.5rem;">If you own a Pennsylvania septic, drilling, or excavation business</p>
+        <p>We are a serious, patient buyer of small Pennsylvania-based operating companies in the land development services stack. If you're thinking about retirement, succession, or a partial liquidity event, or if you've built something good and want to keep building it inside a larger platform, we want to talk.</p>
+
+        <div class="two-col">
+          <div>
+            <div class="section-subhead">What we look for</div>
+            <ul class="bullet-list">
+              <li><strong style="color:var(--text); font-weight:500;">Geography:</strong> Pennsylvania, primarily eastern half of the state. We will travel for the right business.</li>
+              <li><strong style="color:var(--text); font-weight:500;">Size:</strong> $300K–$5M in annual revenue. Owner-operated or small team.</li>
+              <li>Sewage Enforcement Officer (SEO) practices</li>
+              <li>Septic installation &amp; service companies</li>
+              <li>Well drilling and pump service companies</li>
+              <li>Excavation and site work contractors</li>
+              <li>Small civil engineering firms</li>
+              <li>Soil testing and environmental consultants</li>
+              <li><strong style="color:var(--text); font-weight:500;">Financials:</strong> Profitable, SDE ideally above $150K. Clean books. Real customers.</li>
+              <li><strong style="color:var(--text); font-weight:500;">Owner situation:</strong> Retiring, transitioning, or open to 12–24 month management handoff.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="section-subhead">What we offer</div>
+            <ul class="bullet-list">
+              <li><strong style="color:var(--text); font-weight:500;">Fair, market-grounded pricing.</strong> We pay what businesses are worth. We don't lowball, and we don't waste your time.</li>
+              <li><strong style="color:var(--text); font-weight:500;">A real home for your team.</strong> We acquire businesses we want to keep operating, not strip and flip. Your people stay.</li>
+              <li><strong style="color:var(--text); font-weight:500;">Operational respect.</strong> You built something. We don't show up and rip out everything that worked.</li>
+              <li><strong style="color:var(--text); font-weight:500;">Capital and technology behind the brand.</strong> Marketing, systems, back-office, and customer pipeline that small operators usually can't afford on their own.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="process-note">
+          <p><strong style="color:var(--text); font-weight:500; display:block; margin-bottom:0.4rem;">Process</strong>
+          A 30-minute conversation. Mutual NDA. Financial review. Indicative offer within 30 days of clean financials. Close in 60–90 days. No brokers required. We work directly with owners. If you're working with a broker, that's fine too.</p>
+        </div>
+
+        <div class="contact-line">
+          To start a conversation: <a href="mailto:acquisitions@tengrigroupinc.com">acquisitions@tengrigroupinc.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ FOR INVESTORS -->
+  <section id="investors">
+    <div class="container">
+      <h2>For Investors</h2>
+      <div class="section-body">
+        <p>Tengri Group is an operator-led acquisition platform. The model is entrepreneurship through acquisition (ETA), not private equity, not a real estate syndication, not a search fund LP vehicle. The founder is the searcher, the buyer, and the operator. Capital partners participate at the deal or platform level on a non-operational basis.</p>
+
+        <div class="section-subhead">Why the category fits the ETA playbook</div>
+        <ul class="bullet-list">
+          <li>Hundreds of sub-$5M Pennsylvania-based septic, drilling, excavation, and small civil engineering businesses: fragmented, owner-operated, often retiring with no succession plan.</li>
+          <li>Recurring revenue, durable customer demand, low technology disruption risk.</li>
+          <li>Standard SBA 7(a) and 504 financing available for clean targets.</li>
+          <li>Operational improvement (marketing, scheduling, back-office) creates real margin without raising prices.</li>
+        </ul>
+
+        <div class="section-subhead">Typical acquisition structure</div>
+        <ul class="bullet-list">
+          <li>70–80% SBA-backed senior debt</li>
+          <li>10–15% seller note where appropriate</li>
+          <li>10–20% investor equity, non-operational, non-controlling</li>
+          <li>Founder co-invests in every transaction</li>
+        </ul>
+
+        <div class="section-subhead">Two ways to participate</div>
+        <ul class="bullet-list">
+          <li><strong style="color:var(--text); font-weight:500;">Deal-level co-investment.</strong> Specific acquisitions where the target has been identified, financials reviewed, and SBA pre-qualification underway. Investor checks $50K–$300K per deal. Hold horizon 5–10 years.</li>
+          <li><strong style="color:var(--text); font-weight:500;">Platform-level commitment.</strong> Exposure across multiple acquisitions over time. Capital deployed deal-by-deal as they close, with co-invest rights on follow-on opportunities.</li>
+        </ul>
+
+        <div class="section-subhead">What you should know</div>
+        <ul class="bullet-list">
+          <li>We are early. The first platform acquisition is in active sourcing.</li>
+          <li>We do not guarantee returns. Anyone who does is lying.</li>
+          <li>We invest our own capital in everything we ask others to invest in.</li>
+          <li>We send quarterly written updates. We answer the phone.</li>
+          <li>We do not pay placement fees. We do not work with promoters.</li>
+        </ul>
+
+        <div class="section-subhead">On the approach</div>
+        <p>The acquisition approach here comes directly from the ETA framework Aidar is studying at Cornell's Johnson Graduate School of Management. He's the one running the businesses, not a financial sponsor with a portfolio CEO in between.</p>
+
+        <div class="process-note" style="margin-top:2rem;">
+          <p><strong style="color:var(--text); font-weight:500; display:block; margin-bottom:0.4rem;">To explore a conversation</strong>
+          Email <a href="mailto:investors@tengrigroupinc.com" style="color:var(--accent); border-bottom:1px solid; padding-bottom:1px;">investors@tengrigroupinc.com</a> with a one-line note on your interest. We'll send a one-page overview, our current pipeline, and a calendar link.</p>
+        </div>
+
+        <p style="font-size:0.78rem; color:var(--text-light); margin-top:1.75rem; max-width:72ch; line-height:1.7;">Tengri Group does not solicit investment from non-accredited investors. All offerings, when made, are offered exclusively under applicable private placement exemptions to qualified investors. Past performance does not guarantee future results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ FOR OPERATORS -->
+  <section id="operators">
+    <div class="container">
+      <h2>For Operators</h2>
+      <div class="section-body">
+        <p>We are quietly building a team of people who think like operators, regulators, engineers, and investors at the same time. If that's you, the door is open.</p>
+
+        <div class="two-col">
+          <div>
+            <div class="section-subhead">Who we want to talk to</div>
+            <ul class="bullet-list">
+              <li>Licensed PA Sewage Enforcement Officers (SEOs) looking for steady, well-supported deal flow</li>
+              <li>Soil scientists, civil engineers, and surveyors with PA project experience</li>
+              <li>Project managers with site development or construction backgrounds</li>
+              <li>Acquisition entrepreneurs (ETA / search fund) interested in operating one of our portfolio companies</li>
+              <li>Subcontractors (excavators, drillers, septic installers) looking for a recurring partner with reliable pay and steady volume</li>
+            </ul>
+          </div>
+          <div>
+            <div class="section-subhead">What working with Tengri looks like</div>
+            <ul class="bullet-list">
+              <li>We pay on time. We pay correctly. Net 15 from approved invoice.</li>
+              <li>We brief clearly, scope tightly, and don't change the deal mid-job.</li>
+              <li>We respect your craft. We don't second-guess your field judgment.</li>
+              <li>We bring you better, qualified work. Not the bottom-of-the-market jobs nobody else wants.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-line" style="margin-top:2rem;">
+          Email <a href="mailto:work@tengrigroupinc.com">work@tengrigroupinc.com</a> with a one-paragraph note on what you do, where you operate, and what kind of work you're looking for more of.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ LEADERSHIP ══ -->
+  <section id="leadership">
+    <div class="container">
+      <h2>Leadership</h2>
+      <p style="margin-bottom:2.5rem; font-size:0.9rem;">We are a small, owner-operated company. The work and the decisions are our own.</p>
+      <div class="founder-card">
+        <div class="founder-bio">
+          <div class="founder-name">Aidar</div>
+          <div class="founder-title">Founder &amp; CEO</div>
+          <p>Aidar founded Tengri Group to build what he could not find: a serious, capitalized operating platform for the land development services stack in Pennsylvania.</p>
+          <p>Three and a half years as an Army paratrooper, running unit supply and logistics. It turns out that's decent preparation for running anything under pressure. He holds a bachelor's degree from Wesleyan University's College of Social Studies and is completing his MBA at Cornell's Johnson Graduate School of Management (Executive program, Class of 2027), focused on strategy, operations, and entrepreneurship through acquisition.</p>
+          <p>Before Tengri, he worked in program and project management at Chemonics International and ACT1 Federal on U.S. government and international development programs.</p>
+          <p>He lives in the Philadelphia area and is most often found in Bucks, Chester, or the Lehigh Valley.</p>
+          <a href="mailto:araev@tengrigroupinc.com">araev@tengrigroupinc.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ PRINCIPLES ══ -->
+  <section id="principles">
+    <div class="container">
+      <h2>How We Operate</h2>
+      <ol class="principles-list">
+        <li><span class="num">01</span><span>We say what's true, including the parts that are inconvenient.</span></li>
+        <li><span class="num">02</span><span>We invest our own money in every deal we underwrite.</span></li>
+        <li><span class="num">03</span><span>We pay our subs on time, every time.</span></li>
+        <li><span class="num">04</span><span>We build for ten years, not for a quarter.</span></li>
+        <li><span class="num">05</span><span>We are slow to acquire and slow to fire.</span></li>
+        <li><span class="num">06</span><span>We treat sellers, employees, and capital partners the way we'd want to be treated if the roles were reversed.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ CONTACT ══════ -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-col">
+          <h3>Acquisitions (M&amp;A)</h3>
+          <a href="mailto:acquisitions@tengrigroupinc.com">acquisitions@tengrigroupinc.com</a>
+          <p>267-455-7874</p>
+        </div>
+        <div class="contact-col">
+          <h3>Investors</h3>
+          <a href="mailto:investors@tengrigroupinc.com">investors@tengrigroupinc.com</a>
+        </div>
+        <div class="contact-col">
+          <h3>Operators &amp; Subs</h3>
+          <a href="mailto:work@tengrigroupinc.com">work@tengrigroupinc.com</a>
+        </div>
+        <div class="contact-col">
+          <h3>General</h3>
+          <a href="mailto:info@tengrigroupinc.com">info@tengrigroupinc.com</a>
+          <p style="margin-top:0.6rem;">Northeast Philadelphia, PA 19115</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════ FOOTER ═══════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img class="footer-logo" src="/assets/tengri-logo.png" alt="Tengri Group Inc." />
+          <p>Building a vertically integrated land development platform in Pennsylvania.</p>
+        </div>
+        <div class="footer-portfolio">
+          <p>Portfolio</p>
+          <a href="https://tengridevelopment.com" target="_blank" rel="noopener">Tengri Development</a>
+          <a href="#investors">Tengri Capital</a>
+          <a href="#sellers">Field Services Holdings</a>
+        </div>
+        <div class="footer-nav">
+          <p>Quick Links</p>
+          <a href="#thesis">Thesis</a>
+          <a href="#platform">Platform</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#sellers">For Sellers</a>
+          <a href="#investors">For Investors</a>
+          <a href="#operators">For Operators</a>
+          <a href="#leadership">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-trust">Pennsylvania-based · Operator-led · Capital-aligned</div>
+      <p class="footer-legal">© 2026 Tengri Group Inc. All rights reserved. Tengri Group Inc. is a holding company. Operating businesses are subsidiaries. Tengri Capital does not solicit investment from non-accredited investors; all offerings are made exclusively under applicable private placement exemptions to qualified investors. This site does not constitute an offer or solicitation of any security.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      nav.classList.toggle('mobile');
+    });
+
+    // Sticky header shrink on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.style.borderBottomColor = window.scrollY > 10 ? 'var(--rule)' : 'transparent';
+    });
+  </script>
+
+</body>
+</html>
