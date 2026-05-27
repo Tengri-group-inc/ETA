@@ -59,7 +59,10 @@ content, find the matching section:
 - **Add a platform layer**: copy a `.layer-card` block in `#platform`, bump the number.
 - **Replace the logo**: drop the new file in `assets/`, keep the filename
   `tengri-logo.png` (or update the two `<img src="assets/...">` references + the favicon
-  link in `<head>`).
+  link in `<head>`). Use a **transparent-background** PNG/SVG — never one with a baked-in
+  white box. The current mark is **dark navy**, so the footer shows it on a light "logo
+  card" (`.footer-logo { background: var(--bg) }`) to stay legible on the dark footer. If
+  you ever switch to a light/white logo, remove that card background.
 
 ## Git workflow
 
