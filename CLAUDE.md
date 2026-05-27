@@ -66,6 +66,9 @@ content, find the matching section:
   the mobile menu opens, and nav links jump to the right sections.
 - Commit with a short message describing the content change, then push to `main`.
   The live site updates automatically.
+- **Do not add Claude as a commit author or co-author.** No `Co-Authored-By: Claude`
+  trailer and no Claude/AI attribution in commit messages — commits should appear
+  authored solely by the user.
 
 ## Gotchas & lessons learned
 
