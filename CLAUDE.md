@@ -66,3 +66,30 @@ content, find the matching section:
   the mobile menu opens, and nav links jump to the right sections.
 - Commit with a short message describing the content change, then push to `main`.
   The live site updates automatically.
+
+## Gotchas & lessons learned
+
+**If a task took several tries or threw confusing errors before you got it working, add
+an entry here** — symptom, cause, fix — so the same mistake isn't repeated next time.
+Keep entries short. Treat this section as the project's memory.
+
+- **Images must use relative paths, never absolute.** The original site referenced the
+  logo as `/assets/tengri-logo.png`, but no file lived at that path, so it 404'd in the
+  header and footer. Use `assets/tengri-logo.png`. Absolute `/assets/...` also breaks on
+  the GitHub Pages preview URL.
+- **DNS lives in Wix, not a normal registrar.** Nameservers are `*.wixdns.net`. Edit
+  records at **Wix → Domains → Manage DNS Records**, not at a registrar control panel.
+- **In Wix, the root/apex domain = a _blank_ Host name.** Wix's "Add Record" form
+  rejects `@` and only creates subdomains. To point the apex (`tengrigroupinc.com`),
+  leave the Host name field empty. The four GitHub Pages IPs are
+  `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`. `www` is a CNAME →
+  `tengri-group-inc.github.io`.
+- **NEVER touch the email DNS records.** `araev@tengrigroupinc.com` runs on
+  **Microsoft 365**. Leave the MX records and the `autodiscover`, `enterpriseenrollment`,
+  `enterpriseregistration`, `lyncdiscover`, and `sip` CNAMEs alone — editing or deleting
+  any of them breaks company email. Only ever touch the website's A and `www` records.
+- **The HTTPS certificate lag after a DNS change is normal.** GitHub takes anywhere from
+  a few minutes to an hour to issue the SSL cert once DNS is correct. A
+  `NET::ERR_CERT_COMMON_NAME_INVALID` browser warning during that window is expected, not
+  a bug — it clears itself. Don't repeatedly re-trigger the Pages API; that can slow
+  issuance. Just wait, then turn on "Enforce HTTPS."
