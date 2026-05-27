@@ -61,14 +61,46 @@ content, find the matching section:
   `tengri-logo.png` (or update the two `<img src="assets/...">` references + the favicon
   link in `<head>`).
 
-## Before pushing
+## Git workflow
+
+Keep the history clean and professional — these commits are public on the company's
+GitHub.
+
+**Before committing**
 - Open `index.html` in a browser and confirm the logo shows in the header and footer,
   the mobile menu opens, and nav links jump to the right sections.
-- Commit with a short message describing the content change, then push to `main`.
-  The live site updates automatically.
-- **Do not add Claude as a commit author or co-author.** No `Co-Authored-By: Claude`
-  trailer and no Claude/AI attribution in commit messages — commits should appear
-  authored solely by the user.
+- Make sure the commit contains **one logical change**. Don't bundle unrelated edits
+  (e.g. a content rewrite and a color change) into the same commit.
+
+**Commit messages**
+- Short, imperative subject line, ≤ ~60 chars, no trailing period.
+  Good: `Update hero headline`, `Add Tengri Capital portfolio card`, `Fix footer link`.
+  Avoid: `update`, `changes`, `stuff`.
+- If the change needs context, add a blank line then 1–2 sentences explaining **why**.
+- **Never** add Claude as author or co-author — no `Co-Authored-By: Claude` trailer and
+  no Claude/AI mention. Commits are authored solely by the user.
+- Don't commit secrets, API keys, or large unnecessary files.
+
+**Pushing = publishing**
+- Every push to `main` goes **live within ~1–2 minutes**. Push only when the change is
+  ready for the public to see.
+- Want to preview or iterate before going live? Work on a branch, then merge to `main`
+  when it's ready.
+- If a push is rejected with a "fast-forward" / "fetch first" error, run
+  `git pull --rebase origin main` and push again. (GitHub occasionally auto-commits the
+  `CNAME` file, which puts a commit on the remote you don't have locally.)
+
+## Using Context7 (live documentation lookup)
+
+Context7 is an MCP tool that fetches **current** docs for libraries, frameworks, SDKs,
+APIs, CLIs, and cloud services — useful because model knowledge can be out of date.
+
+- This site is plain HTML/CSS/JS with **no libraries or build step**, so Context7 is
+  **rarely needed for routine content edits**. Don't reach for it just to change text.
+- **Do** use it when a task brings in something external, e.g.: adding an analytics
+  snippet (Google Analytics, Plausible), embedding a form/booking service, pulling in a
+  JS library, or questions about **GitHub Pages** behavior or the **`gh` CLI**. In those
+  cases, fetch the latest docs via Context7 instead of relying on memory.
 
 ## Gotchas & lessons learned
 
