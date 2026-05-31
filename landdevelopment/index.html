@@ -725,7 +725,7 @@
       letter-spacing: 0;
     }
 
-    /* ─── Calendly booking section ─── */
+    /* ─── Booking section (Microsoft Bookings iframe) ─── */
     .booking {
       background: var(--bg);
       padding: clamp(4rem, 8vw, 7rem) 0;
@@ -1190,36 +1190,27 @@
 
         <div class="booking-frame">
           <!--
-            ═══════════════════════════════════════════════════════════════
-            ONLINE BOOKING — Calendly inline embed
-            ═══════════════════════════════════════════════════════════════
-            Today: the section below ("booking-fallback") routes users to
-            phone + form. Reads as intentional, no 404s.
-
-            To switch on Calendly when ready:
-              1. Sign up at https://calendly.com (free tier is fine)
-              2. Create an event type, e.g. "Free 15-Min Consultation"
-              3. Copy your event URL — it looks like
-                 https://calendly.com/YOURNAME/consultation
-              4. (a) Delete the entire <div class="booking-fallback"> block.
-                 (b) Uncomment the .calendly-inline-widget block.
-                 (c) Replace YOURNAME/consultation with your real URL.
-            ═══════════════════════════════════════════════════════════════
+            Microsoft Bookings inline embed.
+            Calendar: TengriGroup1@tengrigroupinc.com
+            Public booking page: https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/
+            To switch calendars: replace the src URL below. Heights are
+            controlled by .booking-iframe in CSS (800px desktop, 700px mobile).
           -->
-
-          <div class="booking-fallback">
-            <p>Right now we keep scheduling simple. Call us or send the form above and we'll come back the same day with two or three time options. No widget to wrestle with, no automated emails.</p>
-            <p>
-              <a class="fallback-link" href="tel:+14453147766">Call 445-314-7766</a>
-              &nbsp;·&nbsp;
-              <a class="fallback-link" href="#quote">Send a note</a>
-            </p>
-          </div>
-
-          <!-- Uncomment below and replace YOURNAME/consultation with your Calendly event URL:
-          <div class="calendly-inline-widget" data-url="https://calendly.com/YOURNAME/consultation?hide_gdpr_banner=1"></div>
-          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-          -->
+          <iframe
+            class="booking-iframe"
+            src="https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/"
+            title="Book a free consultation with Tengri Land Development"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="payment; geolocation; microphone; camera"
+          ></iframe>
+          <noscript>
+            <div class="booking-fallback">
+              <p>The booking calendar requires JavaScript. To book a consultation,
+              <a class="fallback-link" href="https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/" target="_blank" rel="noopener">open the booking page directly</a>,
+              or call <a class="fallback-link" href="tel:+14453147766">445-314-7766</a>.</p>
+            </div>
+          </noscript>
         </div>
       </div>
     </section>
