@@ -647,6 +647,123 @@
       gap: 1rem;
     }
 
+    /* ─── Hero photo strip (below hero text, full-bleed) ─── */
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+      aspect-ratio: 16 / 6;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+    }
+    .hero-photo .caption {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(26, 26, 26, 0.78);
+      backdrop-filter: blur(4px);
+      color: #F4F0E5;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    /* ─── Gallery (between Services and Process) ─── */
+    .gallery {
+      background: var(--bg);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .gallery .eyebrow {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 3px;
+      background: var(--rule);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item .label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.85rem 1rem 0.75rem;
+      background: linear-gradient(180deg, transparent, rgba(26,26,26,0.85));
+      color: #F4F0E5;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      letter-spacing: 0;
+    }
+
+    /* ─── Calendly booking section ─── */
+    .booking {
+      background: var(--bg);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+    .booking .head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+    .booking .head .lead {
+      margin: 0 auto 1rem;
+      max-width: none;
+    }
+    .booking .head p { margin: 0 auto; max-width: 56ch; }
+    .booking-frame {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(31, 58, 43, 0.06);
+    }
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 720px;
+    }
+    .booking-fallback {
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .booking-fallback p { margin: 0 auto 1.25rem; max-width: 52ch; }
+    .booking-fallback a.fallback-link {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    .booking-fallback a.fallback-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
     /* ─── Mobile sticky call bar ─── */
     .mobile-call-bar {
       display: none;
@@ -678,6 +795,10 @@
       .leadform-grid { grid-template-columns: 1fr; }
       .row-2 { grid-template-columns: 1fr; }
       .market .price-headline { font-size: 1.4rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-photo { aspect-ratio: 4 / 3; }
+      .hero-photo .caption { font-size: 0.85rem; bottom: 0.6rem; left: 0.6rem; padding: 0.4rem 0.7rem; }
+      .calendly-inline-widget { height: 640px; }
     }
 
     /* ─── Responsive ─── */
@@ -720,6 +841,7 @@
         <a href="#services">Services</a>
         <a href="#process">How It Works</a>
         <a href="#quote">Get a Quote</a>
+        <a href="#booking">Book a Call</a>
         <a href="../#contact">Contact</a>
       </nav>
     </div>
@@ -743,6 +865,11 @@
           <span><span class="dot"></span> Bundled scopes, single point of contact</span>
           <span><span class="dot"></span> 25–30% B2B · 20–25% B2C target margins</span>
         </div>
+
+        <figure class="hero-photo">
+          <img src="assets/horizons.jpg" alt="Soil horizons exposed during a perc test, with a spade for scale" loading="lazy" />
+          <figcaption class="caption">Soil tells the truth before any builder does.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -879,6 +1006,31 @@
             <h3>Emergency response</h3>
             <p>After-hours service for active customers — standard rates inside the PREMIUM plan.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" aria-label="Recent work">
+      <div class="container">
+        <p class="eyebrow">In the field</p>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="assets/perc-test.jpg" alt="Field technician in PPE measuring depth in a perc test pit" loading="lazy" />
+            <figcaption class="label">Perc test, measured by hand.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/camera-inspection.jpg" alt="Septic line camera inspection equipment at an open tank" loading="lazy" />
+            <figcaption class="label">Camera inspection on a residential tank.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/excavation.jpg" alt="Mini-excavator working at a residential site" loading="lazy" />
+            <figcaption class="label">Site access and excavation.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/site-install.jpg" alt="Septic system installation in progress at a new residential build" loading="lazy" />
+            <figcaption class="label">Full system install in progress.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1022,6 +1174,51 @@
             <button type="submit">Send</button>
             <p class="fine">By submitting, you agree we may contact you about your inquiry. We don't share your information.</p>
           </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING / CALENDLY ============ -->
+    <section class="booking" id="booking">
+      <div class="container">
+        <div class="head">
+          <h2>Book a Consultation</h2>
+          <p class="lead">A free 15-minute call.</p>
+          <p>The fastest way to know if we're the right fit — tell us about the parcel, we'll tell you what it needs.</p>
+        </div>
+
+        <div class="booking-frame">
+          <!--
+            ═══════════════════════════════════════════════════════════════
+            ONLINE BOOKING — Calendly inline embed
+            ═══════════════════════════════════════════════════════════════
+            Today: the section below ("booking-fallback") routes users to
+            phone + form. Reads as intentional, no 404s.
+
+            To switch on Calendly when ready:
+              1. Sign up at https://calendly.com (free tier is fine)
+              2. Create an event type, e.g. "Free 15-Min Consultation"
+              3. Copy your event URL — it looks like
+                 https://calendly.com/YOURNAME/consultation
+              4. (a) Delete the entire <div class="booking-fallback"> block.
+                 (b) Uncomment the .calendly-inline-widget block.
+                 (c) Replace YOURNAME/consultation with your real URL.
+            ═══════════════════════════════════════════════════════════════
+          -->
+
+          <div class="booking-fallback">
+            <p>Right now we keep scheduling simple. Call us or send the form above and we'll come back the same day with two or three time options — no widget to wrestle with, no automated emails.</p>
+            <p>
+              <a class="fallback-link" href="tel:+14453147766">Call 445-314-7766</a>
+              &nbsp;·&nbsp;
+              <a class="fallback-link" href="#quote">Send a note</a>
+            </p>
+          </div>
+
+          <!-- Uncomment below and replace YOURNAME/consultation with your Calendly event URL:
+          <div class="calendly-inline-widget" data-url="https://calendly.com/YOURNAME/consultation?hide_gdpr_banner=1"></div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          -->
         </div>
       </div>
     </section>
