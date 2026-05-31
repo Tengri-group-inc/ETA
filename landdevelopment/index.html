@@ -403,6 +403,283 @@
     }
     footer .foot-links a:hover { color: var(--text); }
 
+    /* ─── Emergency strip (top of page) ─── */
+    .emergency-strip {
+      background: var(--bg-dark);
+      color: #F4F0E5;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      padding: 0.55rem 0;
+      text-align: center;
+    }
+    .emergency-strip .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .emergency-strip .pulse {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #B14545;
+      box-shadow: 0 0 0 0 rgba(177, 69, 69, 0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(177, 69, 69, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(177, 69, 69, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(177, 69, 69, 0); }
+    }
+    .emergency-strip a {
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .emergency-strip a:hover { color: #fff; }
+
+    /* ─── Credentials row ─── */
+    .credentials {
+      background: #fff;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 2rem 0;
+    }
+    .credentials .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .credentials .label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border-right: 1px solid var(--rule);
+      padding-right: 2rem;
+    }
+    .credentials .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 2.5rem;
+      align-items: center;
+    }
+    .credentials .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .credentials .badge .seal {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0;
+      flex-shrink: 0;
+    }
+    .credentials .badge .text {
+      font-size: 0.85rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .credentials .badge .text strong {
+      display: block;
+      font-weight: 500;
+    }
+    .credentials .badge .text small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    /* Price headline inside market cards */
+    .market .price-headline {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 0.5rem 0 1rem;
+      line-height: 1.1;
+    }
+    .market .price-headline .unit {
+      font-size: 0.85rem;
+      font-family: var(--sans);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-left: 0.4rem;
+    }
+    .market .see-pricing {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    .market .see-pricing:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ─── Cities chips (coverage section) ─── */
+    .cities-band {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #2E2E2E;
+    }
+    .cities-band .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #B6AC95;
+      margin-bottom: 1rem;
+    }
+    .cities-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cities-chips li {
+      font-size: 0.85rem;
+      color: #D6CFB9;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid #3A3A3A;
+      border-radius: 2px;
+    }
+
+    /* ─── Lead form ─── */
+    .leadform {
+      background: var(--bg);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+    .leadform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    .leadform-grid .lead { margin-bottom: 1.5rem; }
+    .leadform-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 2.25rem;
+    }
+    .leadform-card h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .leadform-card .form-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+    .leadform-card .field { margin-bottom: 1rem; }
+    .leadform-card label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .leadform-card input,
+    .leadform-card select,
+    .leadform-card textarea {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.97rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .leadform-card input:focus,
+    .leadform-card select:focus,
+    .leadform-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(31, 58, 43, 0.10);
+    }
+    .leadform-card textarea { min-height: 100px; resize: vertical; }
+    .leadform-card button[type="submit"] {
+      margin-top: 0.5rem;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      padding: 0.95rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .leadform-card button[type="submit"]:hover { background: #143020; }
+    .leadform-card .fine {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* ─── Mobile sticky call bar ─── */
+    .mobile-call-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 1rem;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+      z-index: 60;
+    }
+    .mobile-call-bar a {
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .mobile-call-bar svg { width: 16px; height: 16px; }
+    @media (max-width: 720px) {
+      .mobile-call-bar { display: block; }
+      body { padding-bottom: 56px; }
+      .emergency-strip { font-size: 0.75rem; }
+      .credentials .container { grid-template-columns: 1fr; }
+      .credentials .label { border-right: 0; border-bottom: 1px solid var(--rule); padding: 0 0 1rem; }
+      .leadform-grid { grid-template-columns: 1fr; }
+      .row-2 { grid-template-columns: 1fr; }
+      .market .price-headline { font-size: 1.4rem; }
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 900px) {
       .split, .markets, .services, .process, .coverage-grid {
@@ -420,6 +697,15 @@
 </head>
 <body>
 
+  <!-- ============ EMERGENCY STRIP ============ -->
+  <div class="emergency-strip">
+    <div class="container">
+      <span><span class="pulse"></span> 24/7 emergency response for active clients</span>
+      <span style="opacity:0.6;">·</span>
+      <a href="tel:+14453147766">Call 445-314-7766</a>
+    </div>
+  </div>
+
   <!-- ============ HEADER ============ -->
   <header>
     <div class="container">
@@ -433,6 +719,7 @@
         <a href="#markets">Who We Serve</a>
         <a href="#services">Services</a>
         <a href="#process">How It Works</a>
+        <a href="#quote">Get a Quote</a>
         <a href="../#contact">Contact</a>
       </nav>
     </div>
@@ -459,6 +746,29 @@
       </div>
     </section>
 
+    <!-- ============ CREDENTIALS ============ -->
+    <section class="credentials" aria-label="Credentials">
+      <div class="container">
+        <span class="label">Certified &amp; Authorized</span>
+        <div class="badges">
+          <div class="badge">
+            <span class="seal" aria-hidden="true">SEO</span>
+            <span class="text">
+              <strong>PA DEP Septic Enforcement Officer</strong>
+              <small>Authorized site evaluation under PA's onlot sewage program</small>
+            </span>
+          </div>
+          <div class="badge">
+            <span class="seal" aria-hidden="true">OSHA</span>
+            <span class="text">
+              <strong>OSHA 300 Certified</strong>
+              <small>Workplace safety &amp; recordkeeping compliance</small>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ MARKETS ============ -->
     <section id="markets">
       <div class="container">
@@ -481,6 +791,7 @@
           <div class="market">
             <span class="tag">Site Development · B2B</span>
             <h3>For buyers, builders, and developers</h3>
+            <p class="price-headline">$1,850 – $4,500<span class="unit">one-time</span></p>
             <p>
               Three bundled packages from buildability assessment to fully-coordinated
               site readiness. Project-based, one-time investment, single project manager.
@@ -490,12 +801,13 @@
               <li>READINESS — pre-construction package for builders</li>
               <li>COMPLETE — full coordination for developers</li>
             </ul>
-            <p class="footnote">$1,850 – $4,500 · one-time · 25–30% target margin</p>
+            <a class="see-pricing" href="#pricing-detail">See full pricing →</a>
           </div>
 
           <div class="market">
             <span class="tag">Homeowner Maintenance · B2C</span>
-            <h3>For homeowners on well & septic</h3>
+            <h3>For homeowners on well &amp; septic</h3>
+            <p class="price-headline">$350 – $899<span class="unit">per year</span></p>
             <p>
               Annual maintenance plans for the household that owns its own water and
               septic. Predictable rates, priority scheduling, and a real person at
@@ -506,7 +818,7 @@
               <li>STANDARD — pumping, camera, emergency discount</li>
               <li>PREMIUM — quarterly testing, no surcharge</li>
             </ul>
-            <p class="footnote">$350 – $899 · per year · 20–25% target margin</p>
+            <a class="see-pricing" href="#pricing-detail">See full pricing →</a>
           </div>
         </div>
       </div>
@@ -618,6 +930,99 @@
             <li>Delaware</li>
           </ul>
         </div>
+
+        <div class="cities-band">
+          <p class="label">Cities &amp; towns we serve</p>
+          <ul class="cities-chips">
+            <li>Doylestown</li>
+            <li>Newtown</li>
+            <li>Yardley</li>
+            <li>Quakertown</li>
+            <li>West Chester</li>
+            <li>Phoenixville</li>
+            <li>Pottstown</li>
+            <li>Norristown</li>
+            <li>Allentown</li>
+            <li>Bethlehem</li>
+            <li>Easton</li>
+            <li>Reading</li>
+            <li>King of Prussia</li>
+            <li>Lansdale</li>
+            <li>Media</li>
+            <li>Coatesville</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEAD FORM ============ -->
+    <section class="leadform" id="quote">
+      <div class="container">
+        <h2>Get a Quote</h2>
+        <div class="leadform-grid">
+          <div>
+            <p class="lead">Two minutes of detail. A real reply, usually the same day.</p>
+            <p>
+              For a faster answer, call <a href="tel:+14453147766" style="border-bottom:1px solid var(--accent); color:var(--accent); padding-bottom:1px;">445-314-7766</a>.
+              Otherwise tell us a little about the property and we'll come back with the
+              scope, timeline, and a fixed quote — not a vague estimate.
+            </p>
+            <p>
+              If the work needs a credential we don't hold, we'll say so up front and
+              point you to a trusted partner.
+            </p>
+          </div>
+
+          <form class="leadform-card"
+                action="mailto:info@tengrigroupinc.com"
+                method="post"
+                enctype="text/plain">
+            <h3>Tell us about the property</h3>
+            <p class="form-sub">Land buyer, builder, developer, or homeowner — same form.</p>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="lf-name">Your name</label>
+                <input id="lf-name" name="Name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="lf-phone">Phone</label>
+                <input id="lf-phone" name="Phone" type="tel" required autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="lf-email">Email</label>
+              <input id="lf-email" name="Email" type="email" required autocomplete="email" />
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="lf-who">I am a…</label>
+                <select id="lf-who" name="Role">
+                  <option value="">Select…</option>
+                  <option>Land buyer / investor</option>
+                  <option>Builder / contractor</option>
+                  <option>Developer</option>
+                  <option>Homeowner</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="lf-county">County / town</label>
+                <input id="lf-county" name="County or town" type="text" placeholder="e.g. Bucks · Doylestown" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="lf-msg">What's going on?</label>
+              <textarea id="lf-msg" name="Situation" placeholder="A few words on the parcel, the timeline, and what you'd like done."></textarea>
+            </div>
+
+            <button type="submit">Send</button>
+            <p class="fine">By submitting, you agree we may contact you about your inquiry. We don't share your information.</p>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -653,6 +1058,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============ STICKY MOBILE CALL BAR ============ -->
+  <div class="mobile-call-bar">
+    <a href="tel:+14453147766" aria-label="Call 445-314-7766">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Tap to call 445-314-7766
+    </a>
+  </div>
 
 </body>
 </html>
