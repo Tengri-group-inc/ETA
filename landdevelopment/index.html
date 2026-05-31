@@ -747,13 +747,65 @@
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(31, 58, 43, 0.06);
     }
-    .booking-iframe {
-      display: block;
-      width: 100%;
-      min-width: 320px;
-      height: 800px;
-      border: 0;
+    .booking-cta {
+      padding: 3.5rem 2rem;
+      text-align: center;
     }
+    .booking-cta .icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+    .booking-cta .icon svg { width: 26px; height: 26px; }
+    .booking-cta h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .booking-cta p {
+      color: var(--text-muted);
+      margin: 0 auto 1.75rem;
+      max-width: 48ch;
+      font-size: 0.97rem;
+    }
+    .booking-cta .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1rem 1.85rem;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .booking-cta .btn-book:hover { background: #143020; transform: translateY(-1px); }
+    .booking-cta .btn-book svg { width: 14px; height: 14px; }
+    .booking-cta .alt {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .booking-cta .alt a {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    .booking-cta .alt a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     .booking-fallback {
       padding: 3.5rem 2rem;
       text-align: center;
@@ -801,7 +853,7 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-photo { aspect-ratio: 4 / 3; }
       .hero-photo .caption { font-size: 0.85rem; bottom: 0.6rem; left: 0.6rem; padding: 0.4rem 0.7rem; }
-      .booking-iframe { height: 700px; }
+      .booking-cta { padding: 2.5rem 1.25rem; }
     }
 
     /* ─── Responsive ─── */
@@ -1190,27 +1242,22 @@
 
         <div class="booking-frame">
           <!--
-            Microsoft Bookings inline embed.
-            Calendar: TengriGroup1@tengrigroupinc.com
-            Public booking page: https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/
-            To switch calendars: replace the src URL below. Heights are
-            controlled by .booking-iframe in CSS (800px desktop, 700px mobile).
+            Booking link: Microsoft Bookings (calendar: Free15MinConsultation@tengrigroupinc.com).
+            Opens in a new tab. To switch calendars later, update the two href values below
+            (the button and the "Or just open" link).
           -->
-          <iframe
-            class="booking-iframe"
-            src="https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/"
-            title="Book a free consultation with Tengri Land Development"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="payment; geolocation; microphone; camera"
-          ></iframe>
-          <noscript>
-            <div class="booking-fallback">
-              <p>The booking calendar requires JavaScript. To book a consultation,
-              <a class="fallback-link" href="https://outlook.office.com/book/TengriGroup1@tengrigroupinc.com/" target="_blank" rel="noopener">open the booking page directly</a>,
-              or call <a class="fallback-link" href="tel:+14453147766">445-314-7766</a>.</p>
+          <div class="booking-cta">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-          </noscript>
+            <h3>Book your free 15-minute consultation</h3>
+            <p>Pick a time that works. You'll get an Outlook invite right after, with the call-in details and a short pre-call note.</p>
+            <a class="btn-book" href="https://outlook.office.com/book/Free15MinConsultation@tengrigroupinc.com/" target="_blank" rel="noopener">
+              Open booking calendar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <span class="alt">Prefer the phone? <a href="tel:+14453147766">Call 445-314-7766</a></span>
+          </div>
         </div>
       </div>
     </section>
