@@ -50,8 +50,9 @@ content, find the matching section:
 - The nav menu (`<nav id="main-nav">`) and the footer "Quick Links" list both link to
   section `id`s. **If you add or rename a section, update both menus** so links don't
   break.
-- Keep contact emails consistent: `acquisitions@`, `investors@`, `work@`, `info@`,
-  and the founder's `araev@tengrigroupinc.com`.
+- The only contact email is `info@tengrigroupinc.com` — there used to be
+  `acquisitions@`, `investors@`, `work@`, and `araev@` aliases, but the site was
+  simplified to a single inbox. Don't reintroduce the others unless asked.
 
 ## Common tasks
 - **Change wording**: edit the text inside the relevant `<section>`.
