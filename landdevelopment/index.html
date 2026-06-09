@@ -1178,11 +1178,17 @@
           </div>
 
           <form class="leadform-card"
-                action="mailto:info@tengrigroupinc.com"
-                method="post"
-                enctype="text/plain">
+                action="https://formsubmit.co/info@tengrigroupinc.com"
+                method="POST">
             <h3>Tell us about the property</h3>
             <p class="form-sub">Land buyer, builder, developer, or homeowner. Same form.</p>
+
+            <!-- FormSubmit configuration (hidden) -->
+            <input type="hidden" name="_subject" value="New land development inquiry — Tengri Group">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://tengrigroupinc.com/landdevelopment/?submitted=1">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="row-2">
               <div class="field">
